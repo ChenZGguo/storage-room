@@ -43,19 +43,21 @@ button {
 
 </style>
 <script>
-window.onload = function() {
-  var video = document.getElementById('myVideo');
-  var button = document.getElementById('myButton');
+  window.onload = function() {
+    var video = document.getElementById('myVideo');
+    var button = document.getElementById('myButton');
 
-  button.onmousedown = function() {
-    video.play();
-  }
+    // Use both mousedown (for desktop) and touchstart (for mobile)
+    button.onmousedown = button.ontouchstart = function() {
+      video.play();
+    }
 
-  button.onmouseup = function() {
-    video.pause();
-    video.currentTime = 0;  // Let the video go back to the beginning
+    // Use both mouseup (for desktop) and touchend (for mobile)
+    button.onmouseup = button.ontouchend = function() {
+      video.pause();
+      video.currentTime = 0;
+    }
   }
-}
 </script>
 </head>
 <body>
